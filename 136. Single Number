@@ -8,6 +8,7 @@ So, the very first thing that comes into our minds if we know these properties i
 As we find a copy of any value, our ans variable will be initialized back to 0 (a^a=0) and at last the only unique element will be left with us which we can return. 
 
 Code: 
+
 ```
 int singleNumber(vector<int>& nums) {
         int ans=0; 
