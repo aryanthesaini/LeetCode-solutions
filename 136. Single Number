@@ -1,4 +1,4 @@
-This post includes the solution to this problem and one more XOR based trick that you might find useful in future. 
+#This post includes the solution to this problem and one more XOR based trick that you might find useful in future. 
 First things first, XOR can be a useful bitwise operation given the range of properties it offers. This question exploits 2 such properties, i.e, XOR of any 2 similar numbers will give us a 0 value and XOR of any number with 0 gives us the same number. 
 
 a^a =0;
@@ -8,6 +8,7 @@ So, the very first thing that comes into our minds if we know these properties i
 As we find a copy of any value, our ans variable will be initialized back to 0 (a^a=0) and at last the only unique element will be left with us which we can return. 
 
 Code: 
+
 
 ```
 int singleNumber(vector<int>& nums) {
