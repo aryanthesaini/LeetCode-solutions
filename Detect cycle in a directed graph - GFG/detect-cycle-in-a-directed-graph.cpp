@@ -6,41 +6,38 @@ using namespace std;
 class Solution {
   public:
   
-  
-  
     bool solve(int src, vector<int>&vis, vector<int>&order, vector<int>adj[]){
-        
+
         vis[src]=1;
         order[src]=1;
-        for(auto x: adj[src]){
+        for(auto x:adj[src]){
             if(!vis[x]){
-                bool con = solve(x, vis, order, adj);
-                if(con == true) return true;
+               bool f =  solve(x,vis, order,adj);
+               if(f==true) return true;
+
             }
-            else if(order[x]) return true;
+                           else if(order[x]) return true;
         }
-        
         order[src]=0;
         return false;
         
     }
-  
     
-  
-  
     // Function to detect cycle in a directed graph.
     bool isCyclic(int V, vector<int> adj[]) {
         // code here
+        
         
         vector<int>vis(V,0);
         vector<int>order(V,0);
         
         for(int i=0;i<V;i++){
             if(!vis[i]){
-                bool c = solve(i, vis,order,adj);
-                if(c== true) return true;
+                bool temp = solve(i, vis, order, adj);
+                if(temp==true) return true;
             }
         }
+        
         return false;
     }
 };
