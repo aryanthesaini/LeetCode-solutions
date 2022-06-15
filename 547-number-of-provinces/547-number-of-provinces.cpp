@@ -1,47 +1,38 @@
 class Solution {
 public:
     
-    void dfs(int src, vector<int>&vis, vector<int>g[]){
+    void dfs(vector<int>g[], vector<int>&vis, int src){
         vis[src]=1;
         for(auto x: g[src]){
             if(!vis[x]){
-                dfs(x, vis, g);
+                dfs(g, vis, x);
             }
         }
     }
-        
-        
-        
-    int findCircleNum(vector<vector<int>>& cities) {
-        int n = cities.size();
-        
-        vector<int>g[n+1];
+    
+    
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n = isConnected.size();
+        vector<int>g[n];
+        vector<int>vis(n,0);
+        int ans=0;
         
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
-                if(cities[i][j]==1){
-                    g[i+1].push_back(j+1);
-                    g[j+1].push_back(i+1);
+                if(isConnected[i][j]==1){
+                    g[i].push_back(j);
+                    g[j].push_back(i);
                 }
             }
         }
-        // for(int i=1;i<=n;i++){
-        //     // cout<<g[i][0];
-        //     for(auto x: g[i]){
-        //         cout<<x<<" ";
-        //     }
-        //     cout<<endl;
-        // }
         
-        int ans=0;
-        vector<int>vis(n+1,0);
-        for(int i=1;i<=n;i++){
+        
+        for(int i=0;i<n;i++){
             if(!vis[i]){
                 ans++;
-                dfs(i, vis, g);
-            }
+                dfs(g, vis, i);
+            }    
         }
-        
         
         return ans;
     }
