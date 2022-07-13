@@ -2,29 +2,33 @@ class Solution {
 public:
     bool isIsomorphic(string s, string t) {
         
-        int n= s.size();
-        map<char,char> mp;
-        set<char>x;
+        int n = s.length();
+        int m = t.length();
+        if(n!=m) return false;
         
-        for(int i=0;i<n;i++)
-        {
-            if(mp.count(s[i])==0 && x.count(t[i])==0)
-            {
+        map<char,char>mp;
+        set<char>st;
+        
+        for(int i=0;i<n;i++){
+            
+            if(mp.find(s[i])==mp.end() and st.find(t[i])==st.end()){
                 mp[s[i]]=t[i];
-                x.insert(t[i]);
+                st.insert(t[i]);
             }
             
-            else if(mp.count(s[i])==0 && x.count(t[i]))
-            {
+            else if(st.find(t[i])!=st.end() and mp.find(s[i])==mp.end() ){
+                return false;
+            }
+            else if(mp[s[i]]!=t[i]){
                 return false;
             }
             
-            else if(mp[s[i]]!=t[i])
-            {
-                return false;
-            }
+            
         }
-    return true;        
+        
+        return true;
+        
+        
         
     }
 };
