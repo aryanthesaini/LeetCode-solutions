@@ -1,10 +1,10 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        
         int n = s.length();
         int m = t.length();
         if(n!=m) return false;
+        
         
         map<char,char>mp;
         set<char>st;
@@ -12,13 +12,14 @@ public:
         for(int i=0;i<n;i++){
             
             if(mp.find(s[i])==mp.end() and st.find(t[i])==st.end()){
-                mp[s[i]]=t[i];
                 st.insert(t[i]);
+                mp[s[i]]=t[i];
             }
             
-            else if(st.find(t[i])!=st.end() and mp.find(s[i])==mp.end() ){
+            else if (st.find(t[i])!=st.end() and mp.find(s[i])==mp.end()){
                 return false;
             }
+            
             else if(mp[s[i]]!=t[i]){
                 return false;
             }
@@ -27,7 +28,6 @@ public:
         }
         
         return true;
-        
         
         
     }
