@@ -4,11 +4,9 @@ public:
         int c = INT_MAX;
         int ans=0;
         
-        for(int i=0;i<prices.size();i++){
-            if(prices[i]<c){
-                c= prices[i];
-            }
-            else if(prices[i]-c>ans) ans= prices[i]-c;
+        for(auto x:prices){
+            if(x<c) c=x;
+            if(x-c>ans) ans=x-c;
         }
         return ans;
     }
