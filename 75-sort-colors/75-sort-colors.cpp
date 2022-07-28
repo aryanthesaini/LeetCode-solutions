@@ -7,14 +7,14 @@ public:
         int e=n-1;
         int m= 0;
         
-        while(m<=e){
+        while(m<=e){      
             
             if(nums[m]==0){
                 swap(nums[s], nums[m]);
                 m++;
-                s++;
-                
+                s++;                
             }
+            
             else if(nums[m]==1){
                 m++;
             }
