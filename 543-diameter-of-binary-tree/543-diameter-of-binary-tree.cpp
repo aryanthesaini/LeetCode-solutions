@@ -11,11 +11,10 @@
  */
 class Solution {
 public:
-    int ma;
+    int ma= INT_MIN;;
     
     int diameterOfBinaryTree(TreeNode* root) {
         
-        ma= INT_MIN;
         int x= solve(root);
         return ma;
     }
