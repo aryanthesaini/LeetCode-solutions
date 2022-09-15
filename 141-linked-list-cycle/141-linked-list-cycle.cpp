@@ -10,14 +10,14 @@ class Solution {
 public:
     bool hasCycle(ListNode *head) {
       
-        set<ListNode*>st;
-        ListNode* cur = head;
-        while(cur!=NULL){
-            if(st.find(cur)!=st.end()){
-                return true;
-            }
-            st.insert(cur);
-            cur=cur->next;
+       ListNode* slow = head;
+       ListNode* fast = head;
+        
+        while(slow!=NULL and fast!=NULL and fast->next != NULL){
+           
+            slow= slow->next;
+            fast = fast->next->next;
+             if(slow == fast) return true;
         }
         return false;
         
